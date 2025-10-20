@@ -1,0 +1,14 @@
+# Grafana Loki Setup Instructions
+
+## Steps to start Loki (local Docker)
+docker run -d --name loki -p 3100:3100 grafana/loki:latest
+
+## Steps to view logs
+docker logs <container_id>
+
+Alternatively, use logcli:
+logcli --addr=http://localhost:3100 query '{job="varlogs"}' --limit=50
+
+## Notes
+- Loki listens on port 3100 by default.
+- Promtail or Nomad task logs can be forwarded to Loki for centralized monitoring.
